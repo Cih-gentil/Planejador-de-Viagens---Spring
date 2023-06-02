@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Local</th>
+                <th scope="col">Quantidade de Dias</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <div th:each="lista : ${lista}">
+                <tr>
+                    <th scope="row" th:text="${lista.local}"></th>
+                    <th scope="row" th:text="${lista.qntDias}"></th>
+                    <th scope="row" th:text="${lista.valor}"></th>
+                    <th scope="row">
+                        <form action="/hospedagem/listar" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="id" th:value=${lista.id}>
+                            <div class="btn-delete">
+                            <button>delete</button>
+                        </div>
+                        </form>
+                    </th>
+                </tr>
+            </div>
+        </tbody>
+    </table>
+</body>
+</html>
